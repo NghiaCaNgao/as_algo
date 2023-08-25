@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "esnext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@src/*": [
+                "src/*"
+            ]
+        },
+        "declaration": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "preserveConstEnums": true,
+        "esModuleInterop": true
+    },
+    "ts-node": {
+        "esm": true,
+        "compilerOptions": {
+            "module": "ES6",
+            "esModuleInterop": true
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "tests/tests/*.ts"
+    ]
+}
