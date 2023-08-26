@@ -13,7 +13,15 @@ export interface IDate {
     year: number
 }
 
+export type IWeekday<T = string> = [T, T, T, T, T, T, T]; // Just 7 elements corresponds to 7 days in a week
+
+export const WEEKDAY: IWeekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const INT = Math.floor;
+export const INVALID_DATE = "Invalid date"
+export const AFTER_DATE = "After Modified date"
+export const INVALID_JD = "Invalid JD"
+export const INVALID_MJD = "Invalid MJD"
+export const INVALID_ARGS = "Invalid arguments"
 
 export const NONEXISTENT_DATE_START: IDate = {
     day: 5,
@@ -29,8 +37,17 @@ export const NONEXISTENT_DATE_END: IDate = {
 
 export const MODIFIED_DATE: IDate = { // 2400000.5 in JD
     day: 17,
-    month: 10,
+    month: 11,
     year: 1858
+}
+
+/**
+ * Split into 2 parts: integer part and  fractional part. VD: 29.5 -> [29, 0.5]
+ * @param num 
+ * @returns [int, fractional]
+ */
+export function SplitFloat(num: number) {
+    return [Math.floor(num), num - Math.floor(num)];
 }
 
 /**
@@ -96,6 +113,10 @@ export function isJulianCalendar(date: IDate): boolean {
  * @returns true if the date is after the modified date
  */
 export function isAfterModifiedDate(date: IDate): boolean {
+    if (!isValidDate(date)) {
+        throw new Error("Invalid date.");
+    }
+
     const { day, month, year } = date;
 
     if (year > MODIFIED_DATE.year) return true;

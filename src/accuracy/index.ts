@@ -4,7 +4,7 @@
  * Accuracy: Chapter 2, About accuracy
  * Includes: P.15 -> P.22.
  * 
- * See the summary version at:  
+ * See the summary version at: https://github.com/NghiaCaNgao/as_algo/wiki/About_Accuracy
  */
 
 
